@@ -7,6 +7,8 @@ for file in "$1"*; do
   exifDate=$(exiftool -CreateDate -s3 -d '%Y-%m-%d %H%M%S' "${file}")
   exifDate="${exifDate:-$(exiftool -FileCreateDate -s3 -d '%Y-%m-%d %H%M%S' "${file}")}"
 
+  # createDate=$(date -r $(stat -f %B "${file}") +'%Y-%m-%d %H%M%S')
+
   ext="${file##*.}"
 
   if test -n "$exifDate"; then
